@@ -1,5 +1,6 @@
 package fr.univamu.iut.menu;
 
+import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Response;
 
@@ -9,8 +10,8 @@ public class MenuResource {
 
     public MenuResource(){}
 
-    public MenuResource(MenuRepositoryInterface bookRepo ){
-        this.service = new MenuService( bookRepo) ;
+    public @Inject MenuResource(MenuRepositoryInterface menuRepo ){
+        this.service = new MenuService( menuRepo) ;
     }
 
     public MenuResource (MenuService service){
