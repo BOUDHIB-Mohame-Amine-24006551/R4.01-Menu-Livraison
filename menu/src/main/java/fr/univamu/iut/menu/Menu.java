@@ -1,5 +1,8 @@
 package fr.univamu.iut.menu;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Menu {
 
     protected int id;
@@ -8,16 +11,22 @@ public class Menu {
     protected String createurNom;
     protected String dateCreation;
     protected String dateMiseAJour;
-    protected int plats_id;
+    protected double prix_total;
+    protected List<Integer> plats_ids;
 
-    public Menu(int id, String nom, int createurId, String createurNom, String dateCreation, String dateMiseAJour, int plats_id) {
+    public Menu() {
+        this.plats_ids = new ArrayList<>();
+    }
+
+    public Menu(int id, String nom, int createurId, String createurNom, String dateCreation, String dateMiseAJour, double prix_total, List<Integer> plats_ids) {
         this.id = id;
         this.nom = nom;
         this.createurId = createurId;
         this.createurNom = createurNom;
         this.dateCreation = dateCreation;
         this.dateMiseAJour = dateMiseAJour;
-        this.plats_id = plats_id;
+        this.prix_total = prix_total;
+        this.plats_ids = plats_ids;
     }
 
     public int getId() {
@@ -44,8 +53,12 @@ public class Menu {
         return dateMiseAJour;
     }
 
-    public int getPlats_id() {
-        return plats_id;
+    public double getPrix_total() {
+        return prix_total;
+    }
+
+    public List<Integer> getPlats_ids() {
+        return plats_ids;
     }
 
     public void setId(int id) {
@@ -72,8 +85,12 @@ public class Menu {
         this.dateMiseAJour = dateMiseAJour;
     }
 
-    public void setPlats_id(int plats_id) {
-        this.plats_id = plats_id;
+    public void setPrix_total(double prix_total) {
+        this.prix_total = prix_total;
+    }
+
+    public void setPlats_ids(List<Integer> plats_ids) {
+        this.plats_ids = plats_ids;
     }
 
     @Override
@@ -85,7 +102,8 @@ public class Menu {
                 ", createurNom='" + createurNom + '\'' +
                 ", dateCreation='" + dateCreation + '\'' +
                 ", dateMiseAJour='" + dateMiseAJour + '\'' +
-                ", plats_id=" + plats_id +
+                ", prix_total=" + prix_total +
+                ", plats_ids=" + plats_ids +
                 '}';
     }
 }

@@ -4,6 +4,7 @@ import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Response;
 
+@Path("/menus")
 public class MenuResource {
 
     private MenuService service;
@@ -27,7 +28,7 @@ public class MenuResource {
     @GET
     @Path("{id}")
     @Produces("application/json")
-    public String getBook( @PathParam("id") int id){
+    public String getMenu( @PathParam("id") int id){
 
         String result = service.getMenuJSON(id);
 
@@ -40,9 +41,9 @@ public class MenuResource {
     @PUT
     @Path("{id}")
     @Consumes("application/json")
-    public Response updateMenu(@PathParam("id") int id, Menu nom ){
+    public Response updateMenu(@PathParam("id") int id, Menu menu ){
 
-        if( ! service.updateMenu(id, nom) )
+        if( ! service.updateMenu(id, menu) )
             throw new NotFoundException();
         else
             return Response.ok("updated").build();

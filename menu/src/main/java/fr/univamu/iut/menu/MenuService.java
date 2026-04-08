@@ -44,7 +44,7 @@ public class MenuService {
     }
 
     public boolean updateMenu(int id, Menu menu) {
-        return menuRepo.updateMenu(id, menu.nom, menu.createurId, menu.createurNom, menu.dateCreation, menu.dateMiseAJour, menu.plats_id);
+        return menuRepo.updateMenu(id, menu);
     }
 
 }
