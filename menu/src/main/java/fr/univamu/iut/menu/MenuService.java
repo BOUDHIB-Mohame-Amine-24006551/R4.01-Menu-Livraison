@@ -47,4 +47,11 @@ public class MenuService {
         return menuRepo.updateMenu(id, menu);
     }
 
+    public boolean createMenu(Menu menu) {
+        return (menuRepo.createMenu(menu) != null);
+    }
+
+    public boolean deleteMenu(int id) {
+        return menuRepo.deleteMenu(id);
+    }
 }

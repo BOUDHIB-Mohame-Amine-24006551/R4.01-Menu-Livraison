@@ -2,6 +2,7 @@ package fr.univamu.iut.menu;
 
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
+import jakarta.ws.rs.Path;
 import jakarta.ws.rs.core.Response;
 
 @Path("/menus")
@@ -38,6 +39,15 @@ public class MenuResource {
         return result;
     }
 
+    @POST
+    @Consumes("application/json")
+    public Response createMenu(Menu menu){
+        if( service.createMenu(menu) )
+            return Response.ok("created").build();
+        else
+            return Response.status(Response.Status.BAD_REQUEST).build();
+    }
+
     @PUT
     @Path("{id}")
     @Consumes("application/json")
@@ -47,6 +57,15 @@ public class MenuResource {
             throw new NotFoundException();
         else
             return Response.ok("updated").build();
+    }
+
+    @DELETE
+    @Path("{id}")
+    public Response deleteMenu(@PathParam("id") int id){
+        if( service.deleteMenu(id) )
+            return Response.ok("deleted").build();
+        else
+            throw new NotFoundException();
     }
 }
 
